@@ -2,14 +2,14 @@
 
 include_once 'Connexion.class.php';
 
-class Produits
+class Articles
 {
     public static function get()
     {
         try
         {
             $stmt = Connexion::getConnexion()->prepare(
-                "SELECT * FROM produits ORDER BY date_ajout DESC");
+                "SELECT * FROM publications ORDER BY date_publication DESC");
             $res = $stmt->execute();
 
             if($res)
@@ -25,36 +25,15 @@ class Produits
         }
     }
 
-    public static function trois_derniers()
+    public function post($publication)
     {
         try
         {
             $stmt = Connexion::getConnexion()->prepare(
-                "SELECT * FROM produits ORDER BY date_ajout DESC LIMIT 3");
-            $res = $stmt->execute();
-
-            if($res)
-            {
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else
-            {
-                return false;
-            }
-        } catch (Exception $e)
-        {
-            return false;
-        }
-    }
-
-    public function post($produit)
-    {
-        try
-        {
-            $stmt = Connexion::getConnexion()->prepare(
-                "INSERT INTO produits(designation, prix_unitaire, unite_mesure, categorie, description, image)"
-                ."VALUES(?, ?, ?, ?, ?, ?)");
+                "INSERT INTO publications(titre, sous_titre, contenu, auteur, image)"
+                ."VALUES(?, ?, ?, ?, ?)");
             $res = $stmt->execute(
-                $produit
+                $publication
             );
 
             if($res)

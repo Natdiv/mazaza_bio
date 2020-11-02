@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="index.php"><img src="img/logo.png" alt=""></a>
+                    <a href="index.php"><img src="../img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">

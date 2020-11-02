@@ -35,13 +35,6 @@ if(isset($_SESSION['user_data']) && $_SESSION['user_data']['type'] === 'admin')
 
 <body>
 
-<?php
-if(isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: ../index.php');
-}
-?>
-
 <!-- Page Preloder -->
 <div id="preloder">
     <div class="loader"></div>
@@ -110,7 +103,7 @@ if(isset($_GET['logout'])) {
 
 <!-- Header Section Begin -->
 <header class="header">
-    <?php include_once '../_pages_to_include/header__top.php'; ?>
+    <?php include_once 'header__top.php'; ?>
     <div class="container">
         <div class="row">
             <div class="col-lg-3">

@@ -302,7 +302,7 @@
                 case Keyboard.DOWN:
                     e.preventDefault();
                     var allItems = $(e.target).parent().parent().children().children('[role="menuitem"]:visible');
-                    var idx = allItems.products( e.target );
+                    var idx = allItems.index( e.target );
                     var nextIdx = idx + 1;
                     if (allItems.length <= nextIdx) {
                         nextIdx = 0;
@@ -313,7 +313,7 @@
                 case Keyboard.UP:
                     e.preventDefault();
                     var allItems = $(e.target).parent().parent().children().children('[role="menuitem"]:visible');
-                    var idx = allItems.products( e.target );
+                    var idx = allItems.index( e.target );
                     var next = allItems.eq( idx - 1 );
                     next.focus();
                 break;

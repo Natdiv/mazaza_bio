@@ -2,11 +2,12 @@
 
 function upload_image($image_file)
 {
-    $upload_dir = '../uploaded-images/';
+    $upload_dir_path = '../uploaded-images/';
+    $upload_dir = 'uploaded-images/';
     $server_url = '';
 
-    if(!file_exists($upload_dir)) {
-        mkdir($upload_dir, 0755, true);
+    if(!file_exists($upload_dir_path)) {
+        mkdir($upload_dir_path, 0766, true);
     }
 
     if($image_file['image'])
@@ -26,8 +27,10 @@ function upload_image($image_file)
         {
             $ext = pathinfo($image_file["image"]['name'])['extension'];
             $random_name = hash('sha256', date('dmYHis').rand(1000,1000000).$document_name);
-            $upload_name = $upload_dir.strtolower($random_name);
+            $upload_name = $upload_dir_path.strtolower($random_name);
+            $url = $upload_dir.strtolower($random_name);
             $upload_name = preg_replace('/\s+/', '-', $upload_name).'.'.$ext;
+            $url = preg_replace('/\s+/', '-', $url).'.'.$ext;
 
             if(true || ext_in_array($ext)) {
 
@@ -36,7 +39,7 @@ function upload_image($image_file)
                         "status" => "success",
                         "error" => false,
                         "message" => "Fichié chargé avec succès",
-                        "url" => $upload_name
+                        "url" => $url
                     );
                     return $response;
                 } else
